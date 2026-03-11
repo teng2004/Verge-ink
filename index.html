@@ -11,18 +11,19 @@
         .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
         .gradient-text { background: linear-gradient(to right, #818cf8, #c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
         .product-card:hover { transform: translateY(-8px); transition: all 0.3s ease; }
-        /* Hide scrollbar for Chrome, Safari and Opera */
         .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
 <body class="selection:bg-indigo-500/30">
 
     <nav class="fixed w-full z-50 glass py-4 px-6 md:px-12 flex justify-between items-center">
         <div class="text-2xl font-black tracking-tighter uppercase italic">Verge <span class="text-indigo-500 italic">Ink</span></div>
-        <div class="hidden md:flex space-x-10 text-[10px] uppercase tracking-[0.2em] font-bold">
-            <a href="#shop" class="hover:text-indigo-400 transition">Collections</a>
-            <a href="#how" class="hover:text-indigo-400 transition">How to</a>
-            <a href="#faq" class="hover:text-indigo-400 transition">Safety</a>
+        <div class="hidden md:flex space-x-10 text-[10px] uppercase tracking-[0.2em] font-bold text-zinc-400">
+            <a href="#shop" class="hover:text-white transition">Collections</a>
+            <a href="#how" class="hover:text-white transition">The Process</a>
+            <a href="#evolution" class="hover:text-white transition">Evolution</a>
+            <a href="#faq" class="hover:text-white transition">Safety</a>
         </div>
         <a href="https://venmo.com/" target="_blank" class="bg-white text-black px-5 py-2 rounded-full text-[10px] font-black uppercase tracking-wider hover:bg-indigo-500 hover:text-white transition">Venmo Me</a>
     </nav>
@@ -58,19 +59,17 @@
                 <button onclick="filterProducts('bundle')" class="filter-btn glass text-zinc-400 px-6 py-2 rounded-full text-[10px] font-black uppercase tracking-widest hover:text-white">Bundles</button>
             </div>
         </div>
-
-        <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
-            </div>
+        <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12"></div>
     </section>
 
     <section id="how" class="py-32 bg-zinc-950 px-6">
         <div class="max-w-6xl mx-auto">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-20 items-center">
-                <div class="glass aspect-square rounded-[3rem] flex items-center justify-center text-zinc-800 font-black text-2xl uppercase italic tracking-tighter">
+                <div class="glass aspect-square rounded-[3rem] flex items-center justify-center text-zinc-800 font-black text-2xl uppercase italic tracking-tighter text-center p-8">
                     [ Demo Video / Image ]
                 </div>
                 <div>
-                    <h2 class="text-5xl font-black uppercase italic mb-12">The 2-Week <br>Transformation</h2>
+                    <h2 class="text-5xl font-black uppercase italic mb-12 italic">The 2-Week <br>Transformation</h2>
                     <div class="space-y-10">
                         <div class="flex gap-6">
                             <span class="text-indigo-500 font-black text-2xl">01</span>
@@ -83,14 +82,14 @@
                             <span class="text-indigo-500 font-black text-2xl">02</span>
                             <div>
                                 <h4 class="font-black uppercase tracking-widest mb-2">Develop</h4>
-                                <p class="text-zinc-500 text-sm leading-relaxed">The ink reacts with your skin and darkens over 24 hours. No needles involved.</p>
+                                <p class="text-zinc-500 text-sm leading-relaxed">The organic ink reacts with your skin and darkens over 24 hours. No needles.</p>
                             </div>
                         </div>
                         <div class="flex gap-6">
                             <span class="text-indigo-500 font-black text-2xl">03</span>
                             <div>
                                 <h4 class="font-black uppercase tracking-widest mb-2">Live Ink-Free</h4>
-                                <p class="text-zinc-500 text-sm leading-relaxed">Waterproof, gym-proof, and Citadel-proof. Fades naturally after 14 days.</p>
+                                <p class="text-zinc-500 text-sm leading-relaxed">Waterproof, gym-proof, and life-proof. Fades naturally after 14 days.</p>
                             </div>
                         </div>
                     </div>
@@ -99,59 +98,95 @@
         </div>
     </section>
     
-    <section id="how" class="py-24 bg-zinc-950 px-6 border-t border-white/5">
-    <div class="max-w-5xl mx-auto">
-        <div class="text-center mb-16">
-            <h2 class="text-3xl font-black mb-4 uppercase tracking-tighter italic">The 24h Evolution</h2>
-            <p class="text-zinc-500 text-sm max-w-md mx-auto">Our organic ink reacts with your skin's proteins. It’s a process, not a sticker. Wait for the magic.</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
+    <section id="evolution" class="py-24 bg-zinc-950 px-6 border-t border-white/5">
+        <div class="max-w-5xl mx-auto text-center">
+            <h2 class="text-3xl font-black mb-16 uppercase italic tracking-tighter">The 24h Evolution</h2>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
+                <div class="relative text-center group">
+                    <div class="w-16 h-16 bg-zinc-900 rounded-full flex items-center justify-center mx-auto mb-6 border border-white/10 group-hover:border-indigo-500 transition-colors">
+                        <span class="text-xs font-bold">0H</span>
+                    </div>
+                    <h4 class="font-bold text-xs mb-2 uppercase italic tracking-widest">Application</h4>
+                    <p class="text-zinc-500 text-[10px] px-4">Applies clear or light blue. Don't worry, it's working.</p>
+                    <div class="hidden md:block absolute top-8 left-[60%] w-full h-[1px] bg-zinc-800"></div>
+                </div>
+                <div class="relative text-center group">
+                    <div class="w-16 h-16 bg-zinc-800 rounded-full flex items-center justify-center mx-auto mb-6 border border-white/10 group-hover:border-indigo-500 transition-colors">
+                        <span class="text-xs font-bold text-indigo-300">12H</span>
+                    </div>
+                    <h4 class="font-bold text-xs mb-2 uppercase italic tracking-widest">Emerging</h4>
+                    <p class="text-zinc-500 text-[10px] px-4">The ink starts reacting. A light shadow begins to surface.</p>
+                    <div class="hidden md:block absolute top-8 left-[60%] w-full h-[1px] bg-zinc-800"></div>
+                </div>
+                <div class="relative text-center group">
+                    <div class="w-20 h-20 bg-indigo-950 rounded-full flex items-center justify-center mx-auto mb-4 border-2 border-indigo-500 -mt-2 shadow-[0_0_20px_rgba(99,102,241,0.3)]">
+                        <span class="text-sm font-black text-white italic">24H</span>
+                    </div>
+                    <h4 class="font-bold text-xs mb-2 uppercase italic text-indigo-400 tracking-widest">Peak Shade</h4>
+                    <p class="text-zinc-400 text-[10px] px-4 font-bold">Deep navy/black appears. 100% indistinguishable.</p>
+                    <div class="hidden md:block absolute top-10 left-[60%] w-full h-[1px] bg-zinc-800"></div>
+                </div>
+                <div class="relative text-center group">
+                    <div class="w-16 h-16 bg-zinc-900 rounded-full flex items-center justify-center mx-auto mb-6 border border-white/10 group-hover:border-indigo-500 transition-colors">
+                        <span class="text-xs font-bold">14D</span>
+                    </div>
+                    <h4 class="font-bold text-xs mb-2 uppercase italic tracking-widest">Fading</h4>
+                    <p class="text-zinc-500 text-[10px] px-4">Naturally exfoliates with skin. No pain, no regret.</p>
+                </div>
+            </div>
             
-            <div class="relative text-center group">
-                <div class="w-16 h-16 bg-zinc-900 rounded-full flex items-center justify-center mx-auto mb-6 border border-white/10 group-hover:border-indigo-500 transition-colors">
-                    <span class="text-xs font-bold">0H</span>
-                </div>
-                <h4 class="font-bold text-sm mb-2 uppercase">Application</h4>
-                <p class="text-zinc-500 text-[11px] leading-relaxed">Applies clear or light blue. Don't worry, it's working.</p>
-                <div class="hidden md:block absolute top-8 left-[60%] w-full h-[1px] bg-zinc-800"></div>
-            </div>
-
-            <div class="relative text-center group">
-                <div class="w-16 h-16 bg-zinc-800 rounded-full flex items-center justify-center mx-auto mb-6 border border-white/10 group-hover:border-indigo-500 transition-colors">
-                    <span class="text-xs font-bold text-indigo-300">12H</span>
-                </div>
-                <h4 class="font-bold text-sm mb-2 uppercase">Emerging</h4>
-                <p class="text-zinc-500 text-[11px] leading-relaxed">The ink starts reacting. A light shadow begins to surface.</p>
-                <div class="hidden md:block absolute top-8 left-[60%] w-full h-[1px] bg-zinc-800"></div>
-            </div>
-
-            <div class="relative text-center group">
-                <div class="w-20 h-20 bg-indigo-950 rounded-full flex items-center justify-center mx-auto mb-4 border-2 border-indigo-500 -mt-2 shadow-[0_0_20px_rgba(99,102,241,0.3)]">
-                    <span class="text-sm font-black text-white italic">24H</span>
-                </div>
-                <h4 class="font-bold text-sm mb-2 uppercase text-indigo-400">Peak Shade</h4>
-                <p class="text-zinc-400 text-[11px] leading-relaxed font-bold">Deep navy/black appears. 100% indistinguishable from a real tattoo.</p>
-                <div class="hidden md:block absolute top-10 left-[60%] w-full h-[1px] bg-zinc-800"></div>
-            </div>
-
-            <div class="relative text-center group">
-                <div class="w-16 h-16 bg-zinc-900 rounded-full flex items-center justify-center mx-auto mb-6 border border-white/10 group-hover:border-indigo-500 transition-colors">
-                    <span class="text-xs font-bold">14D</span>
-                </div>
-                <h4 class="font-bold text-sm mb-2 uppercase">Fading</h4>
-                <p class="text-zinc-500 text-[11px] leading-relaxed">Naturally exfoliates with your skin. No pain, no regret.</p>
+            <div class="mt-16 p-6 glass rounded-2xl border-l-4 border-amber-500/50 text-left max-w-4xl mx-auto">
+                <h5 class="text-xs font-black uppercase text-amber-500 mb-2 tracking-widest">Pro-Tip for Fresh Ink</h5>
+                <p class="text-zinc-400 text-xs leading-relaxed italic">
+                    Avoid heavy sweating or touching the area with other skin for the first 6 hours. If you sleep within the first 12 hours, we recommend wearing long sleeves to prevent "transferring" the tattoo to your face or other parts!
+                </p>
             </div>
         </div>
+    </section>
 
-        <div class="mt-16 p-6 glass rounded-2xl border-l-4 border-amber-500/50">
-            <h5 class="text-xs font-black uppercase text-amber-500 mb-2">Pro-Tip for Fresh Ink</h5>
-            <p class="text-zinc-400 text-xs leading-relaxed italic">
-                Avoid heavy sweating or touching the area with other skin for the first 6 hours. If you sleep within the first 12 hours, we recommend wearing long sleeves to prevent "transferring" the tattoo to your face or other parts!
-            </p>
+    <section id="faq" class="py-24 bg-black px-6">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-3xl font-black mb-16 uppercase italic tracking-tighter text-center">Safety & FAQ</h2>
+            <div class="space-y-4">
+                <div class="border border-white/10 rounded-2xl overflow-hidden glass">
+                    <button onclick="toggleFaq(1)" class="w-full p-6 text-left flex justify-between items-center hover:bg-white/5 transition">
+                        <span class="text-sm font-bold uppercase tracking-widest">Can I remove it instantly?</span>
+                        <span id="icon-1" class="text-indigo-500 transition-transform duration-300">＋</span>
+                    </button>
+                    <div id="faq-1" class="hidden p-6 pt-0 text-zinc-500 text-xs leading-relaxed font-light">
+                        Since our ink dyes the top layer of your skin, it cannot be rubbed off instantly with alcohol or soap. It will naturally fade as your skin regenerates. To speed up the process, gently exfoliate with warm water and a body scrub or use a washcloth.
+                    </div>
+                </div>
+                <div class="border border-white/10 rounded-2xl overflow-hidden glass">
+                    <button onclick="toggleFaq(2)" class="w-full p-6 text-left flex justify-between items-center hover:bg-white/5 transition">
+                        <span class="text-sm font-bold uppercase tracking-widest">Is it safe for all skin types?</span>
+                        <span id="icon-2" class="text-indigo-500 transition-transform duration-300">＋</span>
+                    </button>
+                    <div id="faq-2" class="hidden p-6 pt-0 text-zinc-500 text-xs leading-relaxed font-light">
+                        Our ink is made from Gardenia Jasminoides (plant-based). While it is organic and safe for most, we recommend a small patch test if you have extremely sensitive skin or plant allergies. Discontinue use if irritation occurs.
+                    </div>
+                </div>
+                <div class="border border-white/10 rounded-2xl overflow-hidden glass">
+                    <button onclick="toggleFaq(3)" class="w-full p-6 text-left flex justify-between items-center hover:bg-white/5 transition">
+                        <span class="text-sm font-bold uppercase tracking-widest">Will it stain my clothes or sheets?</span>
+                        <span id="icon-3" class="text-indigo-500 transition-transform duration-300">＋</span>
+                    </button>
+                    <div id="faq-3" class="hidden p-6 pt-0 text-zinc-500 text-xs leading-relaxed font-light">
+                        Only during the first 24 hours of development! The ink is "active" until it fully darkens. To prevent "ghosting" (transferring the image to your face or sheets), we highly recommend wearing long-sleeved clothing during your first night.
+                    </div>
+                </div>
+                <div class="border border-white/10 rounded-2xl overflow-hidden glass">
+                    <button onclick="toggleFaq(4)" class="w-full p-6 text-left flex justify-between items-center hover:bg-white/5 transition">
+                        <span class="text-sm font-bold uppercase tracking-widest">Can I go to the gym or swim?</span>
+                        <span id="icon-4" class="text-indigo-500 transition-transform duration-300">＋</span>
+                    </button>
+                    <div id="faq-4" class="hidden p-6 pt-0 text-zinc-500 text-xs leading-relaxed font-light">
+                        Absolutely. After the first 24 hours of development, Verge Ink is 100% waterproof and sweat-proof. It is perfect for athletes and beach days. Just avoid heavy scrubbing on the area to ensure maximum longevity.
+                    </div>
+                </div>
+            </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <footer class="py-24 px-6 text-center border-t border-white/5">
         <div class="text-3xl font-black uppercase italic mb-8 tracking-tighter">Verge <span class="text-indigo-500">Ink</span></div>
@@ -159,107 +194,142 @@
             Founded by Zevan. <br> bringing finest aesthetics to America.
         </p>
         <div class="space-y-4 mb-16">
-            <p class="text-[10px] uppercase tracking-[0.4em] text-zinc-600">Payment Methods</p>
-            <div class="flex justify-center gap-6 opacity-40 grayscale">
-                <span class="text-xs font-bold underline">VENMO</span>
-                <span class="text-xs font-bold underline">CASH APP</span>
-                <span class="text-xs font-bold underline">ZELLE</span>
+            <p class="text-[10px] uppercase tracking-[0.4em] text-zinc-600 font-black">Payment Methods</p>
+            <div class="flex justify-center gap-6 opacity-40 grayscale text-[10px] font-black">
+                <span>VENMO</span> <span>CASH APP</span> <span>ZELLE</span>
             </div>
         </div>
-        <div class="text-[9px] text-zinc-800 uppercase tracking-widest">
+        <div class="text-[9px] text-zinc-800 uppercase tracking-[0.5em]">
             © 2026 VERGE INK. Built by a Computer Science Major.
         </div>
     </footer>
 
+    <div id="product-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 bg-black/95 backdrop-blur-md">
+        <div class="bg-zinc-950 w-full max-w-5xl max-h-[90vh] overflow-y-auto rounded-[2rem] border border-white/10 relative no-scrollbar">
+            <button onclick="closeModal()" class="absolute top-8 right-8 z-10 text-white/50 hover:text-white text-3xl transition">✕</button>
+            <div class="grid grid-cols-1 md:grid-cols-2">
+                <div id="modal-gallery" class="flex overflow-x-auto snap-x snap-mandatory aspect-square border-b md:border-b-0 md:border-r border-white/10 no-scrollbar"></div>
+                <div class="p-10 md:p-16 flex flex-col justify-center">
+                    <span id="modal-tag" class="text-indigo-400 text-[10px] font-black tracking-[0.3em] uppercase mb-4">Featured</span>
+                    <h2 id="modal-title" class="text-4xl font-black mb-4 italic tracking-tighter uppercase leading-tight">Product Name</h2>
+                    <p id="modal-price" class="text-2xl text-zinc-300 mb-8 font-light">$0.00</p>
+                    <div class="h-px w-16 bg-indigo-500 mb-8"></div>
+                    <p id="modal-desc" class="text-zinc-500 text-sm leading-relaxed mb-10 font-light italic">Description goes here...</p>
+                    <div class="mb-10 p-5 bg-indigo-500/5 rounded-2xl border border-indigo-500/10">
+                        <h5 class="text-[9px] font-black uppercase text-indigo-400 mb-2 tracking-widest">Removal & Care</h5>
+                        <p class="text-zinc-500 text-[10px] leading-relaxed">
+                            Fades naturally as your skin regenerates. Want it gone sooner? Gently exfoliate with warm water and a scrub. Keep skin hydrated for the best visual result.
+                        </p>
+                    </div>
+                    <a href="https://venmo.com/" target="_blank" class="w-full py-5 bg-white text-black text-center font-black text-xs uppercase tracking-[0.2em] rounded-2xl hover:bg-indigo-500 hover:text-white transition shadow-xl">
+                        Order via Venmo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // 1. YOUR PRODUCT DATA (Add more from Shopee here!)
+        // 1. 完整產品資料庫
         const products = [
             {
                 id: 1,
                 name: "Exercise self-discipline and act with caution; feel shame when necessary, but live without regret.",
                 category: "calligraphy",
                 price: 18.00,
-                desc: "Hand-written calligraphy meaning Courage & Valor.",
+                desc: "Hand-written calligraphy meaning Courage & Valor. The ultimate code for the modern warrior.",
                 tag: "Best Seller",
-                img: "https://down-tw.img.susercontent.com/file/e0350f6cdc3a1e8ef23afec16e8bceae@resize_w900_nl.webp"
+                images: ["https://down-tw.img.susercontent.com/file/e0350f6cdc3a1e8ef23afec16e8bceae@resize_w900_nl.webp"]
             },
             {
                 id: 2,
                 name: "CYBER VORTEX",
                 category: "cyber",
                 price: 15.00,
-                desc: "Sharp, aggressive lines inspired by digital sigilism.",
+                desc: "Sharp, aggressive lines inspired by digital sigilism and 2026 aesthetics.",
                 tag: "Trending",
-                img: "https://via.placeholder.com/600x800/18181b/ffffff?text=CYBER+INK"
+                images: ["https://via.placeholder.com/800x800/18181b/ffffff?text=CYBER+VORTEX"]
             },
             {
                 id: 3,
                 name: "WARRIOR BUNDLE",
                 category: "bundle",
                 price: 28.00,
-                desc: "Set of 5 - Faith, Strength, Honor, Bravery, Loyalty.",
+                desc: "Set of 5 - Faith, Strength, Honor, Bravery, Loyalty. Complete your signature look.",
                 tag: "Value Pack",
-                img: "https://via.placeholder.com/600x800/18181b/ffffff?text=BUNDLE+SET"
+                images: ["https://via.placeholder.com/800x800/18181b/ffffff?text=WARRIOR+BUNDLE"]
             },
             {
                 id: 4,
                 name: "MINIMALIST LOTUS",
                 category: "minimalist",
                 price: 10.00,
-                desc: "Simple fine-line geometry for subtle expression.",
+                desc: "Simple fine-line geometry. A subtle symbol of purity and rebirth.",
                 tag: "Classic",
-                img: "https://via.placeholder.com/600x800/18181b/ffffff?text=MINIMALIST"
+                images: ["https://via.placeholder.com/800x800/18181b/ffffff?text=MINIMALIST+LOTUS"]
             }
         ];
 
-        // 2. RENDER FUNCTION
+        // 2. 渲染產品
         function renderProducts(filter = 'all') {
             const grid = document.getElementById('product-grid');
-            grid.innerHTML = ''; // Clear current products
-
+            grid.innerHTML = ''; 
             const filtered = filter === 'all' ? products : products.filter(p => p.category === filter);
-
             filtered.forEach(p => {
-                const card = `
-                    <div class="product-card group cursor-pointer animate-fade-in">
+                grid.innerHTML += `
+                    <div class="product-card group cursor-pointer" onclick="openModal(${p.id})">
                         <div class="relative aspect-[3/4] bg-zinc-900 rounded-[2.5rem] overflow-hidden mb-6 glass">
-                            <img src="${p.img}" alt="${p.name}" class="w-full h-full object-cover opacity-80 group-hover:scale-110 group-hover:opacity-100 transition duration-700">
-                            <div class="absolute top-6 left-6 bg-indigo-600/80 backdrop-blur px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest text-white">
-                                ${p.tag}
-                            </div>
+                            <img src="${p.images[0]}" class="w-full h-full object-cover opacity-80 group-hover:scale-110 group-hover:opacity-100 transition duration-700">
+                            <div class="absolute top-6 left-6 bg-indigo-600/80 backdrop-blur px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest text-white">${p.tag}</div>
                         </div>
                         <div class="flex justify-between items-start px-2">
-                            <div>
-                                <h3 class="text-xl font-black uppercase tracking-tight mb-1 italic">${p.name}</h3>
-                                <p class="text-zinc-500 text-xs font-light">${p.desc}</p>
-                            </div>
+                            <div><h3 class="text-xl font-black uppercase tracking-tight mb-1 italic leading-tight max-w-[200px]">${p.name.substring(0, 30)}...</h3><p class="text-zinc-500 text-xs font-light">${p.category}</p></div>
                             <span class="text-xl font-light text-indigo-400">$${p.price.toFixed(2)}</span>
                         </div>
-                        <button onclick="window.location.href='https://venmo.com/'" class="w-full mt-6 py-4 glass border border-white/10 rounded-2xl font-black text-[10px] uppercase tracking-[0.2em] hover:bg-white hover:text-black transition duration-300">
-                            Order via Venmo
-                        </button>
-                    </div>
-                `;
-                grid.innerHTML += card;
+                    </div>`;
             });
         }
 
-        // 3. FILTER LOGIC
-        function filterProducts(category) {
-            // Update UI buttons
-            const btns = document.querySelectorAll('.filter-btn');
-            btns.forEach(btn => {
-                btn.classList.remove('bg-indigo-600', 'text-white');
-                btn.classList.add('glass', 'text-zinc-400');
-            });
-            event.currentTarget.classList.add('bg-indigo-600', 'text-white');
-            event.currentTarget.classList.remove('glass', 'text-zinc-400');
+        // 3. 彈窗邏輯
+        function openModal(productId) {
+            const p = products.find(prod => prod.id === productId);
+            document.getElementById('modal-title').innerText = p.name;
+            document.getElementById('modal-price').innerText = `$${p.price.toFixed(2)}`;
+            document.getElementById('modal-desc').innerText = p.desc;
+            document.getElementById('modal-tag').innerText = p.tag;
+            const gallery = document.getElementById('modal-gallery');
+            gallery.innerHTML = p.images.map(img => `<div class="min-w-full h-full snap-start"><img src="${img}" class="w-full h-full object-cover"></div>`).join('');
+            document.getElementById('product-modal').classList.replace('hidden', 'flex');
+            document.body.style.overflow = 'hidden';
+        }
 
-            // Render filtered data
+        function closeModal() {
+            document.getElementById('product-modal').classList.replace('flex', 'hidden');
+            document.body.style.overflow = 'auto';
+        }
+
+        // 4. 篩選邏輯
+        function filterProducts(category) {
+            const btns = document.querySelectorAll('.filter-btn');
+            btns.forEach(btn => btn.classList.replace('bg-indigo-600', 'glass'));
+            event.currentTarget.classList.replace('glass', 'bg-indigo-600');
             renderProducts(category);
         }
 
-        // INITIAL RENDER
+        // 5. FAQ 摺疊邏輯
+        function toggleFaq(id) {
+            const content = document.getElementById(`faq-${id}`);
+            const icon = document.getElementById(`icon-${id}`);
+            if (content.classList.contains('hidden')) {
+                content.classList.remove('hidden');
+                icon.style.transform = 'rotate(45deg)';
+            } else {
+                content.classList.add('hidden');
+                icon.style.transform = 'rotate(0deg)';
+            }
+        }
+
+        // 初始化
         renderProducts();
     </script>
 </body>
