@@ -10,21 +10,24 @@
         body { font-family: 'Inter', sans-serif; background-color: #050505; color: #ffffff; }
         .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(12px); border: 1px solid rgba(255, 255, 255, 0.1); }
         .gradient-text { background: linear-gradient(to right, #818cf8, #c084fc); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        .product-card:hover { transform: translateY(-8px); transition: all 0.3s ease; }
+        .product-card:hover { transform: translateY(-12px); transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-fade-up { animation: fadeUp 0.6s ease forwards; }
     </style>
 </head>
 <body class="selection:bg-indigo-500/30">
 
-    <nav class="fixed w-full z-50 glass py-4 px-6 md:px-12 flex justify-between items-center">
+    <nav class="fixed w-full z-50 glass py-5 px-6 md:px-12 flex justify-between items-center">
         <div class="text-2xl font-black tracking-tighter uppercase italic">Verge <span class="text-indigo-500 italic">Ink</span></div>
         <div class="hidden md:flex space-x-10 text-[10px] uppercase tracking-[0.2em] font-bold text-zinc-400">
-            <a href="#shop" class="hover:text-white transition uppercase">Collections</a>
-            <a href="#how" class="hover:text-white transition uppercase">The Process</a>
-            <a href="#faq" class="hover:text-white transition uppercase">Safety</a>
+            <a href="#shop" class="hover:text-white transition">Collections</a>
+            <a href="#how" class="hover:text-white transition">The Process</a>
+            <a href="#evolution" class="hover:text-white transition">Evolution</a>
+            <a href="#faq" class="hover:text-white transition">Safety</a>
         </div>
-        <a href="https://venmo.com/" target="_blank" class="bg-white text-black px-5 py-2 rounded-full text-[10px] font-black uppercase tracking-wider hover:bg-indigo-500 hover:text-white transition">Venmo Me</a>
+        <a href="https://venmo.com/" target="_blank" class="bg-white text-black px-6 py-2 rounded-full text-[10px] font-black uppercase tracking-wider hover:bg-indigo-500 hover:text-white transition">Venmo Me</a>
     </nav>
 
     <section class="relative min-h-screen flex items-center justify-center px-6 overflow-hidden">
@@ -33,10 +36,10 @@
             <h1 class="text-7xl md:text-9xl font-black mb-8 leading-none tracking-tighter uppercase italic">
                 Realism <br><span class="gradient-text">No Regrets.</span>
             </h1>
-            <p class="text-zinc-400 text-lg md:text-xl mb-12 max-w-2xl mx-auto font-light leading-relaxed">
+            <p class="text-zinc-400 text-lg md:text-xl mb-12 max-w-2xl mx-auto font-light leading-relaxed animate-fade-up">
                 Premium 2-week semi-permanent ink curated in Taiwan. <br class="hidden md:block"> Designed for the bold, the military, and the visionary.
             </p>
-            <div class="flex flex-col md:flex-row gap-6 justify-center">
+            <div class="flex flex-col md:flex-row gap-6 justify-center animate-fade-up" style="animation-delay: 0.2s;">
                 <a href="#shop" class="bg-indigo-600 hover:bg-indigo-500 text-white px-12 py-5 rounded-full font-black uppercase tracking-widest transition shadow-2xl shadow-indigo-500/20">Explore Shop</a>
                 <a href="#how" class="glass px-12 py-5 rounded-full font-black uppercase tracking-widest hover:bg-white/10 transition">The Process</a>
             </div>
@@ -44,20 +47,21 @@
     </section>
 
     <section id="shop" class="py-32 px-6 max-w-7xl mx-auto">
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
-            <div>
-                <h2 class="text-5xl font-black uppercase italic mb-4">Collections</h2>
-                <p class="text-zinc-500 tracking-widest uppercase text-xs">Ships from Charleston, SC | Free over $25</p>
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-8">
+            <div id="category-info" class="animate-fade-up">
+                <h2 id="current-category" class="text-6xl font-black uppercase italic mb-4 tracking-tighter">Collections</h2>
+                <p id="category-desc" class="text-zinc-500 tracking-widest uppercase text-xs max-w-lg leading-relaxed">Ships from Charleston, SC | Free over $25</p>
             </div>
             
             <div class="flex gap-3 no-scrollbar overflow-x-auto">
-                <button onclick="filterProducts('all')" class="filter-btn active bg-indigo-600 text-white px-6 py-2 rounded-full text-[10px] font-black uppercase tracking-widest transition">All</button>
-                <button onclick="filterProducts('calligraphy')" class="filter-btn glass text-zinc-400 px-6 py-2 rounded-full text-[10px] font-black uppercase tracking-widest hover:text-white transition">Calligraphy</button>
-                <button onclick="filterProducts('cyber')" class="filter-btn glass text-zinc-400 px-6 py-2 rounded-full text-[10px] font-black uppercase tracking-widest hover:text-white transition">Cyber</button>
-                <button onclick="filterProducts('bundle')" class="filter-btn glass text-zinc-400 px-6 py-2 rounded-full text-[10px] font-black uppercase tracking-widest hover:text-white transition">Bundles</button>
+                <button onclick="changeCategory('all')" class="filter-btn active bg-indigo-600 text-white px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-widest transition-all">All</button>
+                <button onclick="changeCategory('calligraphy')" class="filter-btn glass text-zinc-400 px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-widest hover:text-white transition-all">Calligraphy</button>
+                <button onclick="changeCategory('cyber')" class="filter-btn glass text-zinc-400 px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-widest hover:text-white transition-all">Cyber</button>
+                <button onclick="changeCategory('minimalist')" class="filter-btn glass text-zinc-400 px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-widest hover:text-white transition-all">Minimalist</button>
+                <button onclick="changeCategory('bundle')" class="filter-btn glass text-zinc-400 px-8 py-3 rounded-full text-[10px] font-black uppercase tracking-widest hover:text-white transition-all">Bundles</button>
             </div>
         </div>
-        <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12"></div>
+        <div id="product-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"></div>
     </section>
 
     <section id="how" class="py-32 bg-zinc-950 px-6">
@@ -67,27 +71,27 @@
                     [ Demo Video / Image ]
                 </div>
                 <div>
-                    <h2 class="text-5xl font-black uppercase italic mb-12 italic leading-tight">The 2-Week <br>Transformation</h2>
+                    <h2 class="text-5xl font-black uppercase italic mb-12 leading-tight">The 2-Week <br>Transformation</h2>
                     <div class="space-y-10">
                         <div class="flex gap-6">
-                            <span class="text-indigo-500 font-black text-2xl tracking-tighter italic">01</span>
+                            <span class="text-indigo-500 font-black text-2xl italic">01</span>
                             <div>
                                 <h4 class="font-black uppercase tracking-widest mb-2">Apply</h4>
-                                <p class="text-zinc-500 text-sm leading-relaxed">Clean skin, press the sticker with a wet cloth for 30 seconds. Easy as that.</p>
+                                <p class="text-zinc-500 text-sm leading-relaxed font-light">Clean skin, press the sticker with a wet cloth for 30 seconds. Easy as that.</p>
                             </div>
                         </div>
                         <div class="flex gap-6">
-                            <span class="text-indigo-500 font-black text-2xl tracking-tighter italic">02</span>
+                            <span class="text-indigo-500 font-black text-2xl italic">02</span>
                             <div>
                                 <h4 class="font-black uppercase tracking-widest mb-2">Develop</h4>
-                                <p class="text-zinc-500 text-sm leading-relaxed">The organic ink reacts with your skin and darkens over 24 hours. No needles involved.</p>
+                                <p class="text-zinc-500 text-sm leading-relaxed font-light">The organic ink reacts with your skin and darkens over 24 hours. No needles.</p>
                             </div>
                         </div>
                         <div class="flex gap-6">
-                            <span class="text-indigo-500 font-black text-2xl tracking-tighter italic">03</span>
+                            <span class="text-indigo-500 font-black text-2xl italic">03</span>
                             <div>
                                 <h4 class="font-black uppercase tracking-widest mb-2">Live Ink-Free</h4>
-                                <p class="text-zinc-500 text-sm leading-relaxed">Waterproof, gym-proof, and Citadel-proof. Fades naturally after 14 days.</p>
+                                <p class="text-zinc-500 text-sm leading-relaxed font-light">Waterproof, sweat-proof, and fade-resistant for 14 days.</p>
                             </div>
                         </div>
                     </div>
@@ -95,39 +99,31 @@
             </div>
         </div>
     </section>
-    
+
     <section id="evolution" class="py-24 bg-zinc-950 px-6 border-t border-white/5 text-center">
         <div class="max-w-5xl mx-auto">
-            <h2 class="text-3xl font-black mb-16 uppercase italic tracking-tighter italic">The 24h Evolution</h2>
+            <h2 class="text-3xl font-black mb-16 uppercase italic tracking-tighter">The 24h Evolution</h2>
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
-                <div class="relative text-center group">
-                    <div class="w-16 h-16 bg-zinc-900 rounded-full flex items-center justify-center mx-auto mb-6 border border-white/10 group-hover:border-indigo-500 transition-colors">
-                        <span class="text-xs font-bold">0H</span>
-                    </div>
+                <div class="relative text-center">
+                    <div class="w-16 h-16 bg-zinc-900 rounded-full flex items-center justify-center mx-auto mb-6 border border-white/10"><span class="text-xs font-bold">0H</span></div>
                     <h4 class="font-bold text-xs mb-2 uppercase italic tracking-widest">Application</h4>
-                    <p class="text-zinc-500 text-[10px] px-4 italic">Applies clear or light blue. Don't worry.</p>
+                    <p class="text-zinc-500 text-[10px] px-4 italic">Applies clear. The magic is starting.</p>
                     <div class="hidden md:block absolute top-8 left-[60%] w-full h-[1px] bg-zinc-800"></div>
                 </div>
-                <div class="relative text-center group">
-                    <div class="w-16 h-16 bg-zinc-800 rounded-full flex items-center justify-center mx-auto mb-6 border border-white/10 group-hover:border-indigo-500 transition-colors">
-                        <span class="text-xs font-bold text-indigo-300">12H</span>
-                    </div>
+                <div class="relative text-center">
+                    <div class="w-16 h-16 bg-zinc-800 rounded-full flex items-center justify-center mx-auto mb-6 border border-white/10"><span class="text-xs font-bold text-indigo-300">12H</span></div>
                     <h4 class="font-bold text-xs mb-2 uppercase italic tracking-widest">Emerging</h4>
                     <p class="text-zinc-500 text-[10px] px-4 italic">A light shadow begins to surface.</p>
                     <div class="hidden md:block absolute top-8 left-[60%] w-full h-[1px] bg-zinc-800"></div>
                 </div>
-                <div class="relative text-center group">
-                    <div class="w-20 h-20 bg-indigo-950 rounded-full flex items-center justify-center mx-auto mb-4 border-2 border-indigo-500 -mt-2 shadow-[0_0_20px_rgba(99,102,241,0.3)]">
-                        <span class="text-sm font-black text-white italic">24H</span>
-                    </div>
+                <div class="relative text-center">
+                    <div class="w-20 h-20 bg-indigo-950 rounded-full flex items-center justify-center mx-auto mb-4 border-2 border-indigo-500 -mt-2 shadow-[0_0_20px_rgba(99,102,241,0.3)]"><span class="text-sm font-black text-white italic">24H</span></div>
                     <h4 class="font-bold text-xs mb-2 uppercase italic text-indigo-400 tracking-widest">Peak Shade</h4>
                     <p class="text-zinc-400 text-[10px] px-4 font-bold italic uppercase">Realistic AF.</p>
                     <div class="hidden md:block absolute top-10 left-[60%] w-full h-[1px] bg-zinc-800"></div>
                 </div>
-                <div class="relative text-center group">
-                    <div class="w-16 h-16 bg-zinc-900 rounded-full flex items-center justify-center mx-auto mb-6 border border-white/10 group-hover:border-indigo-500 transition-colors">
-                        <span class="text-xs font-bold">14D</span>
-                    </div>
+                <div class="relative text-center">
+                    <div class="w-16 h-16 bg-zinc-900 rounded-full flex items-center justify-center mx-auto mb-6 border border-white/10"><span class="text-xs font-bold">14D</span></div>
                     <h4 class="font-bold text-xs mb-2 uppercase italic tracking-widest">Fading</h4>
                     <p class="text-zinc-500 text-[10px] px-4 italic">Naturally exfoliates. Time for new ink.</p>
                 </div>
@@ -135,7 +131,7 @@
             
             <div class="mt-16 p-6 glass rounded-2xl border-l-4 border-amber-500/50 text-left max-w-4xl mx-auto">
                 <h5 class="text-xs font-black uppercase text-amber-500 mb-2 tracking-widest">Pro-Tip for Fresh Ink</h5>
-                <p class="text-zinc-400 text-xs leading-relaxed italic">
+                <p class="text-zinc-400 text-xs leading-relaxed italic font-light">
                     Avoid heavy sweating or touching the area with other skin for the first 6 hours. If you sleep within the first 12 hours, we recommend wearing long sleeves to prevent "transferring" the tattoo to your face or other parts!
                 </p>
             </div>
@@ -143,43 +139,43 @@
     </section>
 
     <section id="faq" class="py-24 bg-black px-6">
-        <div class="max-w-3xl mx-auto">
-            <h2 class="text-3xl font-black mb-16 uppercase italic tracking-tighter text-center italic">Safety & FAQ</h2>
-            <div class="space-y-6">
+        <div class="max-w-3xl mx-auto text-center">
+            <h2 class="text-3xl font-black mb-16 uppercase italic tracking-tighter">Safety & FAQ</h2>
+            <div class="space-y-6 text-left">
                 <div class="border border-white/10 rounded-2xl overflow-hidden glass">
                     <button onclick="toggleFaq(1)" class="w-full p-6 text-left flex justify-between items-center hover:bg-white/5 transition">
-                        <span class="text-sm md:text-base font-black uppercase tracking-widest text-white">Can I remove it instantly?</span>
-                        <span id="icon-1" class="text-indigo-500 transition-transform duration-300 text-xl font-bold">＋</span>
+                        <span class="text-sm font-black uppercase tracking-widest text-white">Can I remove it instantly?</span>
+                        <span id="icon-1" class="text-indigo-500 transition-transform">＋</span>
                     </button>
-                    <div id="faq-1" class="hidden p-6 pt-0 text-zinc-300 text-sm md:text-base leading-relaxed font-normal">
-                        Since our ink dyes the top layer of your skin, it cannot be rubbed off instantly. It will naturally fade as your skin regenerates. To speed up the process, gently exfoliate with warm water and a body scrub.
+                    <div id="faq-1" class="hidden p-6 pt-0 text-zinc-300 text-sm leading-relaxed font-normal">
+                        Since our ink dyes the top layer of your skin, it cannot be rubbed off instantly. It will naturally fade as your skin regenerates. To speed up, gently exfoliate with warm water and a body scrub.
                     </div>
                 </div>
                 <div class="border border-white/10 rounded-2xl overflow-hidden glass">
                     <button onclick="toggleFaq(2)" class="w-full p-6 text-left flex justify-between items-center hover:bg-white/5 transition">
-                        <span class="text-sm md:text-base font-black uppercase tracking-widest text-white">Is it safe for all skin types?</span>
-                        <span id="icon-2" class="text-indigo-500 transition-transform duration-300 text-xl font-bold">＋</span>
+                        <span class="text-sm font-black uppercase tracking-widest text-white">Is it safe for all skin types?</span>
+                        <span id="icon-2" class="text-indigo-500 transition-transform">＋</span>
                     </button>
-                    <div id="faq-2" class="hidden p-6 pt-0 text-zinc-300 text-sm md:text-base leading-relaxed font-normal">
-                        Our ink is plant-based (Gardenia Jasminoides). While organic and safe for most, we recommend a small patch test if you have extremely sensitive skin.
+                    <div id="faq-2" class="hidden p-6 pt-0 text-zinc-300 text-sm leading-relaxed font-normal">
+                        Our ink is plant-based (Gardenia Jasminoides). While safe for most, we recommend a small patch test if you have extremely sensitive skin.
                     </div>
                 </div>
                 <div class="border border-white/10 rounded-2xl overflow-hidden glass">
                     <button onclick="toggleFaq(3)" class="w-full p-6 text-left flex justify-between items-center hover:bg-white/5 transition">
-                        <span class="text-sm md:text-base font-black uppercase tracking-widest text-white">Will it stain my clothes or bedsheets?</span>
-                        <span id="icon-3" class="text-indigo-500 transition-transform duration-300 text-xl font-bold">＋</span>
+                        <span class="text-sm font-black uppercase tracking-widest text-white">Will it stain my clothes or bedsheets?</span>
+                        <span id="icon-3" class="text-indigo-500 transition-transform">＋</span>
                     </button>
-                    <div id="faq-3" class="hidden p-6 pt-0 text-zinc-300 text-sm md:text-base leading-relaxed font-normal">
-                        Only during the first 24 hours! The ink is "active" until it darkens. To prevent "ghosting" on your face or sheets, we highly recommend wearing long-sleeved clothing during your first night.
+                    <div id="faq-3" class="hidden p-6 pt-0 text-zinc-300 text-sm leading-relaxed font-normal">
+                        Only during the first 24 hours! To prevent "ghosting" (transferring), we highly recommend wearing long sleeves during your first night.
                     </div>
                 </div>
                 <div class="border border-white/10 rounded-2xl overflow-hidden glass">
                     <button onclick="toggleFaq(4)" class="w-full p-6 text-left flex justify-between items-center hover:bg-white/5 transition">
-                        <span class="text-sm md:text-base font-black uppercase tracking-widest text-white">Can I go to the gym or swim?</span>
-                        <span id="icon-4" class="text-indigo-500 transition-transform duration-300 text-xl font-bold">＋</span>
+                        <span class="text-sm font-black uppercase tracking-widest text-white">Can I go to the gym or swim?</span>
+                        <span id="icon-4" class="text-indigo-500 transition-transform">＋</span>
                     </button>
-                    <div id="faq-4" class="hidden p-6 pt-0 text-zinc-300 text-sm md:text-base leading-relaxed font-normal">
-                        Absolutely. After 24 hours, Verge Ink is 100% waterproof and sweat-proof. Perfect for athletes and beach days. Just avoid heavy scrubbing on the area.
+                    <div id="faq-4" class="hidden p-6 pt-0 text-zinc-300 text-sm leading-relaxed font-normal">
+                        Absolutely. After 24h, Verge Ink is 100% waterproof and sweat-proof. Perfect for athletes. Just avoid heavy scrubbing.
                     </div>
                 </div>
             </div>
@@ -188,70 +184,61 @@
 
     <footer class="py-24 px-6 text-center border-t border-white/5">
         <div class="text-3xl font-black uppercase italic mb-8 tracking-tighter">Verge <span class="text-indigo-500">Ink</span></div>
-        <p class="text-zinc-500 text-sm max-w-md mx-auto mb-12 font-light italic">
-            Founded by Zevan. <br> bringing finest aesthetics to America.
-        </p>
-        <div class="space-y-4 mb-16">
-            <p class="text-[10px] uppercase tracking-[0.4em] text-zinc-600 font-black tracking-widest">Payment Methods</p>
-            <div class="flex justify-center gap-6 opacity-40 grayscale text-[10px] font-black italic">
-                <span>VENMO</span> <span>CASH APP</span> <span>ZELLE</span>
+        <p class="text-zinc-500 text-sm max-w-md mx-auto mb-12 font-light italic">Founded by Zevan. <br> Bringing finest aesthetics to America.</p>
+        <div class="text-[9px] text-zinc-800 uppercase tracking-[0.5em] font-bold">© 2026 VERGE INK. Built by a Computer Science Major.</div>
+    </footer>
+
+    <div id="sales-notification" class="fixed bottom-6 left-6 z-[200] transform translate-y-20 opacity-0 transition-all duration-700 ease-out pointer-events-none">
+        <div class="glass p-4 rounded-2xl flex items-center gap-4 border border-white/10 shadow-2xl max-w-[280px]">
+            <div class="w-12 h-12 bg-indigo-600 rounded-xl flex-shrink-0 flex items-center justify-center overflow-hidden"><img id="sales-img" src="" class="w-full h-full object-cover"></div>
+            <div class="flex flex-col">
+                <p id="sales-text" class="text-[11px] text-zinc-300 leading-tight"></p>
+                <span class="text-[9px] text-zinc-600 uppercase mt-1 tracking-widest font-black">Just Now</span>
             </div>
         </div>
-        <div class="text-[9px] text-zinc-800 uppercase tracking-[0.5em] font-bold">
-            © 2026 VERGE INK. Built by a Computer Science Major.
-        </div>
-    </footer>
+    </div>
 
     <div id="product-modal" class="fixed inset-0 z-[100] hidden items-center justify-center p-4 bg-black/95 backdrop-blur-md">
         <div class="bg-zinc-950 w-full max-w-5xl max-h-[90vh] overflow-y-auto rounded-[2rem] border border-white/10 relative no-scrollbar">
             <button onclick="closeModal()" class="absolute top-8 right-8 z-20 text-white/50 hover:text-white text-3xl transition">✕</button>
             <div class="grid grid-cols-1 md:grid-cols-2">
                 <div class="relative group aspect-square">
-                    <div id="modal-gallery" class="flex overflow-x-auto snap-x snap-mandatory h-full no-scrollbar border-b md:border-b-0 md:border-r border-white/10">
-                        </div>
-                    <button onclick="scrollGallery(-1)" class="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full glass flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-all hover:bg-white/20">
-                        <span class="text-2xl">←</span>
-                    </button>
-                    <button onclick="scrollGallery(1)" class="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full glass flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-all hover:bg-white/20">
-                        <span class="text-2xl">→</span>
-                    </button>
-                    <div class="absolute bottom-6 left-1/2 -translate-x-1/2 bg-black/50 backdrop-blur-xl px-4 py-1.5 rounded-full text-[10px] text-white/70 uppercase tracking-widest font-black pointer-events-none border border-white/10">
-                        Scroll to browse
-                    </div>
+                    <div id="modal-gallery" class="flex overflow-x-auto snap-x snap-mandatory h-full no-scrollbar border-b md:border-b-0 md:border-r border-white/10"></div>
+                    <button onclick="scrollGallery(-1)" class="absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full glass flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-all">←</button>
+                    <button onclick="scrollGallery(1)" class="absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full glass flex items-center justify-center text-white opacity-0 group-hover:opacity-100 transition-all">→</button>
                 </div>
-                
                 <div class="p-10 md:p-16 flex flex-col justify-center text-left">
                     <span id="modal-tag" class="text-indigo-400 text-[10px] font-black tracking-[0.3em] uppercase mb-4 tracking-widest">Featured</span>
-                    <h2 id="modal-title" class="text-4xl font-black mb-4 italic tracking-tighter uppercase leading-tight">Product Name</h2>
-                    <p id="modal-price" class="text-2xl text-zinc-300 mb-8 font-light italic">$0.00</p>
+                    <h2 id="modal-title" class="text-4xl font-black mb-4 italic tracking-tighter uppercase leading-tight"></h2>
+                    <p id="modal-price" class="text-2xl text-zinc-300 mb-8 font-light italic"></p>
                     <div class="h-px w-16 bg-indigo-500 mb-8"></div>
-                    <p id="modal-desc" class="text-zinc-300 text-sm md:text-base leading-relaxed mb-10 font-normal">Description...</p>
-                    
-                    <div class="mb-10 p-6 bg-indigo-500/5 rounded-2xl border border-indigo-500/10">
-                        <h5 class="text-[10px] font-black uppercase text-indigo-400 mb-2 tracking-widest">Removal & Care</h5>
-                        <p class="text-zinc-300 text-[11px] leading-relaxed">
-                            Fades naturally as skin regenerates (14 days). To remove faster, gently exfoliate with warm water and a body scrub.
-                        </p>
-                    </div>
-                    <a href="https://venmo.com/" target="_blank" class="w-full py-5 bg-white text-black text-center font-black text-xs uppercase tracking-[0.2em] rounded-2xl hover:bg-indigo-600 hover:text-white transition shadow-xl">
-                        Order via Venmo
-                    </a>
+                    <p id="modal-desc" class="text-zinc-300 text-sm md:text-base leading-relaxed mb-10 font-normal italic"></p>
+                    <a id="venmo-btn" href="#" target="_blank" class="w-full py-5 bg-white text-black text-center font-black text-xs uppercase tracking-[0.2em] rounded-2xl hover:bg-indigo-600 hover:text-white transition shadow-xl">Order via Venmo</a>
                 </div>
             </div>
         </div>
     </div>
 
     <script>
-        // 1. 完整產品資料庫
+        // 1. 分類描述資料 (EZINK風格)
+        const categories = {
+            all: { title: "Collections", desc: "Browse all premium temporary ink designs curated for the visionary." },
+            calligraphy: { title: "Eastern Arts", desc: "Hand-written calligraphy meaning power, discipline, and the warrior spirit." },
+            cyber: { title: "Cyber Sigilism", desc: "Aggressive, sharp, and futuristic lines inspired by 2026 digital aesthetics." },
+            minimalist: { title: "Fine Line", desc: "Subtle geometry and minimalist symbols for a sophisticated expression." },
+            bundle: { title: "Value Packs", desc: "The ultimate collections. Multiple designs to complete your signature look." }
+        };
+
+        // 2. 完整 12 個商品資料庫
         const products = [
             { 
                 id: 1, 
-                name: "Self-Discipline & Valor (紀律與勇氣)", 
+                name: "Self-Discipline & Valor", 
                 category: "calligraphy", 
                 price: 18.00, 
-                desc: "Exercise self-discipline and act with caution; feel shame when necessary, but live without regret.", 
+                desc: "Exercise self-discipline and act with caution; live without regret.", 
                 tag: "Best Seller", 
-                images: ["https://down-tw.img.susercontent.com/file/e0350f6cdc3a1e8ef23afec16e8bceae@resize_w900_nl.webp"] 
+                images: ["https://down-tw.img.susercontent.com/file/193cb2652b9fa53814605ec3cec4db83@resize_w900_nl.webp", "https://down-tw.img.susercontent.com/file/e0350f6cdc3a1e8ef23afec16e8bceae@resize_w900_nl.webp"] 
             },
             { 
                 id: 2, 
@@ -260,42 +247,147 @@
                 price: 15.00, 
                 desc: "Sharp, aggressive lines inspired by digital sigilism and 2026 aesthetics.", 
                 tag: "Trending", 
-                images: ["https://down-tw.img.susercontent.com/file/8aff244a2618638cc214b687637b3c20.webp", 
-                    "https://down-tw.img.susercontent.com/file/00102eb315b286620f578abf8e345e48.webp",
-                    "https://down-tw.img.susercontent.com/file/faf36466dac4dea3576ebbb363ea32c3.webp"
-                ] 
+                images: ["https://down-tw.img.susercontent.com/file/8aff244a2618638cc214b687637b3c20.webp", "https://down-tw.img.susercontent.com/file/00102eb315b286620f578abf8e345e48.webp", "https://down-tw.img.susercontent.com/file/faf36466dac4dea3576ebbb363ea32c3.webp"] 
             },
-            { id: 3, name: "WARRIOR BUNDLE", category: "bundle", price: 28.00, desc: "Set of 5 - Faith, Strength, Honor, Bravery, Loyalty.", tag: "Value Pack", images: ["https://via.placeholder.com/800x800/18181b/ffffff?text=WARRIOR+BUNDLE"] },
-            { id: 4, name: "MINIMALIST LOTUS", category: "minimalist", price: 10.00, desc: "Simple fine-line geometry symbol of purity.", tag: "Classic", images: ["https://via.placeholder.com/800x800/18181b/ffffff?text=MINIMALIST+LOTUS"] }
+            { 
+                id: 3, 
+                name: "yy (Warrior Bundle)", 
+                category: "bundle", 
+                price: 28.00, 
+                desc: "Set of 5 - Faith, Strength, Honor, Bravery, Loyalty. Complete your signature look.", 
+                tag: "Value Pack", 
+                images: ["https://down-tw.img.susercontent.com/file/sg-11134201-81zu8-mihu127lmdq9e1.webp"] 
+            },
+            { 
+                id: 4, 
+                name: "MINIMALIST LOTUS", 
+                category: "minimalist", 
+                price: 10.00, 
+                desc: "Simple fine-line geometry symbol of purity.", 
+                tag: "Classic", 
+                images: ["https://via.placeholder.com/800x800/18181b/ffffff?text=MINIMALIST+LOTUS"] 
+            },
+            { 
+                id: 5, 
+                name: "Fuck you", 
+                category: "cyber", 
+                price: 15.00, 
+                desc: "Unapologetic rebellion. A bold, sharp statement for those who simply don't care.", 
+                tag: "Edgy", 
+                images: ["https://down-tw.img.susercontent.com/file/8aff244a2618638cc214b687637b3c20.webp", "https://down-tw.img.susercontent.com/file/00102eb315b286620f578abf8e345e48.webp"] 
+            },
+            { 
+                id: 6, 
+                name: "CYBER SIGIL 04", 
+                category: "cyber", 
+                price: 15.00, 
+                desc: "Neo-tribal aggressive sigil for the modern age.", 
+                tag: "New", 
+                images: ["https://down-tw.img.susercontent.com/file/faf36466dac4dea3576ebbb363ea32c3.webp"] 
+            },
+            { 
+                id: 7, 
+                name: "ETERNAL STRENGTH", 
+                category: "calligraphy", 
+                price: 12.00, 
+                desc: "Ancient script representing enduring strength and unyielding power.", 
+                tag: "Popular", 
+                images: ["https://down-tw.img.susercontent.com/file/e0350f6cdc3a1e8ef23afec16e8bceae@resize_w900_nl.webp"] 
+            },
+            { 
+                id: 8, 
+                name: "SERENITY WAVES", 
+                category: "minimalist", 
+                price: 10.00, 
+                desc: "Calm, flowing fine lines representing the ocean's infinite motion.", 
+                tag: "Minimal", 
+                images: ["https://via.placeholder.com/800x800/18181b/ffffff?text=SERENITY+WAVES"] 
+            },
+            { 
+                id: 9, 
+                name: "Y2K BARBED WIRE", 
+                category: "cyber", 
+                price: 16.00, 
+                desc: "A throwback to early 2000s grunge, reimagined with sharp cyber aesthetics.", 
+                tag: "Trending", 
+                images: ["https://via.placeholder.com/800x800/18181b/ffffff?text=BARBED+WIRE"] 
+            },
+            { 
+                id: 10, 
+                name: "THE RONIN BUNDLE", 
+                category: "bundle", 
+                price: 30.00, 
+                desc: "A master collection of dark, aggressive cyber and calligraphy mix.", 
+                tag: "Premium", 
+                images: ["https://via.placeholder.com/800x800/18181b/ffffff?text=RONIN+BUNDLE"] 
+            },
+            { 
+                id: 11, 
+                name: "GEOMETRIC WOLF", 
+                category: "minimalist", 
+                price: 14.00, 
+                desc: "A structural, mathematical take on the alpha predator.", 
+                tag: "Classic", 
+                images: ["https://via.placeholder.com/800x800/18181b/ffffff?text=GEOMETRIC+WOLF"] 
+            },
+            { 
+                id: 12, 
+                name: "MEMENTO MORI", 
+                category: "calligraphy", 
+                price: 18.00, 
+                desc: "Remember you must die. A powerful script to remind you to live fully.", 
+                tag: "Signature", 
+                images: ["https://down-tw.img.susercontent.com/file/193cb2652b9fa53814605ec3cec4db83@resize_w900_nl.webp"] 
+            }
         ];
 
-        // 2. 渲染列表
+        // 3. 渲染邏輯
         function renderProducts(filter = 'all') {
             const grid = document.getElementById('product-grid');
-            grid.innerHTML = ''; 
+            grid.innerHTML = '';
             const filtered = filter === 'all' ? products : products.filter(p => p.category === filter);
-            filtered.forEach(p => {
+            filtered.forEach((p, idx) => {
                 grid.innerHTML += `
-                    <div class="product-card group cursor-pointer" onclick="openModal(${p.id})">
+                    <div class="product-card group cursor-pointer animate-fade-up" style="animation-delay: ${idx * 0.05}s" onclick="openModal(${p.id})">
                         <div class="relative aspect-[3/4] bg-zinc-900 rounded-[2.5rem] overflow-hidden mb-6 glass">
                             <img src="${p.images[0]}" class="w-full h-full object-cover opacity-80 group-hover:scale-110 group-hover:opacity-100 transition duration-700">
                             <div class="absolute top-6 left-6 bg-indigo-600/80 backdrop-blur px-3 py-1 rounded-full text-[9px] font-black uppercase tracking-widest text-white">${p.tag}</div>
                         </div>
                         <div class="flex justify-between items-start px-2">
-                            <div><h3 class="text-xl font-black uppercase tracking-tight mb-1 italic leading-tight max-w-[200px] text-white">${p.name.substring(0, 25)}...</h3><p class="text-zinc-500 text-xs font-light tracking-widest uppercase">${p.category}</p></div>
+                            <div><h3 class="text-xl font-black uppercase tracking-tight mb-1 italic text-white leading-tight">${p.name.substring(0, 20)}...</h3><p class="text-zinc-500 text-xs font-light tracking-widest uppercase">${p.category}</p></div>
                             <span class="text-xl font-light text-indigo-400">$${p.price.toFixed(2)}</span>
                         </div>
                     </div>`;
             });
         }
 
-        // 3. 彈窗與滑動邏輯
+        // 4. 分類切換邏輯
+        function changeCategory(cat) {
+            document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.replace('bg-indigo-600', 'glass'));
+            event.currentTarget.classList.replace('glass', 'bg-indigo-600');
+            const info = categories[cat];
+            
+            const header = document.getElementById('category-info');
+            header.classList.remove('animate-fade-up');
+            void header.offsetWidth;
+            header.classList.add('animate-fade-up');
+
+            document.getElementById('current-category').innerText = info.title;
+            document.getElementById('category-desc').innerText = info.desc;
+            renderProducts(cat);
+        }
+
         function openModal(productId) {
             const p = products.find(prod => prod.id === productId);
             document.getElementById('modal-title').innerText = p.name;
             document.getElementById('modal-price').innerText = `$${p.price.toFixed(2)}`;
             document.getElementById('modal-desc').innerText = p.desc;
-            document.getElementById('modal-tag').innerText = p.tag;
+            
+            // Venmo 深層連結
+            const venmoID = "YourVenmoID"; 
+            const note = encodeURIComponent(`Order: ${p.name}`);
+            document.getElementById('venmo-btn').href = `venmo://paycharge?txn=pay&recipients=${venmoID}&amount=${p.price}&notes=${note}`;
+
             const gallery = document.getElementById('modal-gallery');
             gallery.innerHTML = p.images.map(img => `<div class="w-full h-full flex-shrink-0 snap-start"><img src="${img}" class="w-full h-full object-cover"></div>`).join('');
             document.getElementById('product-modal').classList.replace('hidden', 'flex');
@@ -303,9 +395,9 @@
             gallery.scrollLeft = 0;
         }
 
-        function scrollGallery(direction) {
-            const gallery = document.getElementById('modal-gallery');
-            gallery.scrollBy({ left: direction * gallery.clientWidth, behavior: 'smooth' });
+        function scrollGallery(dir) {
+            const g = document.getElementById('modal-gallery');
+            g.scrollBy({ left: dir * g.clientWidth, behavior: 'smooth' });
         }
 
         function closeModal() {
@@ -313,26 +405,28 @@
             document.body.style.overflow = 'auto';
         }
 
-        function filterProducts(category) {
-            const btns = document.querySelectorAll('.filter-btn');
-            btns.forEach(btn => btn.classList.replace('bg-indigo-600', 'glass'));
-            event.currentTarget.classList.replace('glass', 'bg-indigo-600');
-            renderProducts(category);
-        }
-
         function toggleFaq(id) {
             const content = document.getElementById(`faq-${id}`);
             const icon = document.getElementById(`icon-${id}`);
-            if (content.classList.contains('hidden')) {
-                content.classList.remove('hidden');
-                icon.style.transform = 'rotate(45deg)';
-            } else {
-                content.classList.add('hidden');
-                icon.style.transform = 'rotate(0deg)';
-            }
+            content.classList.toggle('hidden');
+            icon.innerText = content.classList.contains('hidden') ? '＋' : '－';
+        }
+
+        // 銷售通知 (左下角彈窗)
+        const locs = ["Charleston", "Columbia", "Greenville", "The Citadel", "Charlotte"];
+        function showSales() {
+            const notify = document.getElementById('sales-notification');
+            const p = products[Math.floor(Math.random() * products.length)];
+            document.getElementById('sales-text').innerHTML = `<span class="font-black text-white italic">Someone</span> in ${locs[Math.floor(Math.random() * locs.length)]} just purchased <span class="text-indigo-400 font-bold">${p.name.substring(0,12)}...</span>.`;
+            document.getElementById('sales-img').src = p.images[0];
+            notify.classList.replace('translate-y-20', 'translate-y-0');
+            notify.classList.replace('opacity-0', 'opacity-100');
+            setTimeout(() => { notify.classList.replace('translate-y-0', 'translate-y-20'); notify.classList.replace('opacity-100', 'opacity-0'); }, 5000);
+            setTimeout(showSales, Math.random() * 20000 + 10000);
         }
 
         renderProducts();
+        setTimeout(showSales, 5000);
     </script>
 </body>
 </html>
