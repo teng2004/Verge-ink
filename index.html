@@ -283,7 +283,7 @@
                 price: 15.00, 
                 desc: "Neo-tribal aggressive sigil for the modern age.", 
                 tag: "New", 
-                images: ["https://down-tw.img.susercontent.com/file/faf36466dac4dea3576ebbb363ea32c3.webp"] 
+                images: ["https://github.com/teng2004/Verge-ink/commit/5913e5c03b4b6d190161b0a1742cc4481450e625#diff-086df2fb80ba3985b38c3730d6a4d6d6bafac66392a89fa4d5bdc3c18beab602"] 
             },
             { 
                 id: 7, 
@@ -410,19 +410,6 @@
             const icon = document.getElementById(`icon-${id}`);
             content.classList.toggle('hidden');
             icon.innerText = content.classList.contains('hidden') ? '＋' : '－';
-        }
-
-        // 銷售通知 (左下角彈窗)
-        const locs = ["Charleston", "Columbia", "Greenville", "The Citadel", "Charlotte"];
-        function showSales() {
-            const notify = document.getElementById('sales-notification');
-            const p = products[Math.floor(Math.random() * products.length)];
-            document.getElementById('sales-text').innerHTML = `<span class="font-black text-white italic">Someone</span> in ${locs[Math.floor(Math.random() * locs.length)]} just purchased <span class="text-indigo-400 font-bold">${p.name.substring(0,12)}...</span>.`;
-            document.getElementById('sales-img').src = p.images[0];
-            notify.classList.replace('translate-y-20', 'translate-y-0');
-            notify.classList.replace('opacity-0', 'opacity-100');
-            setTimeout(() => { notify.classList.replace('translate-y-0', 'translate-y-20'); notify.classList.replace('opacity-100', 'opacity-0'); }, 5000);
-            setTimeout(showSales, Math.random() * 20000 + 10000);
         }
 
         renderProducts();
